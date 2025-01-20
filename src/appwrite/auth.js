@@ -9,7 +9,7 @@ const user = await account.create(ID.unique(), "email", "password") */
 
 // creating class so that diff codes remain separate
 export class AuthService {
-    client = new Client().setEndpoint().setProject()
+    client = new Client();
     account;
 
     constructor(){
