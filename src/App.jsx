@@ -3,8 +3,7 @@ import { useDispatch } from 'react-redux'
 import './App.css'
 import auth from "./appwrite/auth"
 import { login, logout } from './store/authSlice'
-import Header from "./components/header/Header"
-import Footer from "./components/footer/Footer"
+import {Header, Footer} from "./components/index"
 import { Outlet } from 'react-router-dom'
 
 function App() {
@@ -40,7 +39,15 @@ function App() {
 
   return (
     <>
-    <h1>Blog App with Appwrite</h1>
+    <div id="loading-screen" className="fixed inset-0 z-50 flex items-center justify-center bg-white">
+      <div className="flex flex-col items-center">
+        {/* Spinner */}
+        <div className="h-16 w-16 border-4 border-t-transparent border-gray-500 rounded-full animate-spin"></div>
+        {/* Loading Text */}
+        <p className="mt-4 text-gray-700 text-lg font-medium">Loading...</p>
+      </div>
+    </div>
+
     </>
   )
 }
