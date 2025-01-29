@@ -15,18 +15,19 @@ function PostForm({post}) {
             status: post?.status || "active",
         }
     })
-    const userData = useSelector((state) => state.user.userData)
+    const userData = useSelector((state) => state.auth.userData)
+    userData.$id
 
     const submit = async (data) => {
         // update Form
         if(post){
             const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null
             if(file) {
-                appwriteService.deleteFile(post.featuredImg)
+                appwriteService.deleteFile(post.featuredImage)
             }
             const dbPost = await appwriteService.updatePost(
                 post.$id, 
-                {...data, featuredImg: file.$id || undefined}
+                {...data, featuredImage: file.$id || undefined}
             )
             if (dbPost){
                 navigate(`/post/${dbPost.$id}`)
@@ -35,11 +36,13 @@ function PostForm({post}) {
         // create new form
         else{
             const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null
+            
             if (file){
-                data.featuredImg = file.$id;
+                console.log(userData?.$id)
+                data.featuredImage = file.$id;
                 const dbPost = await appwriteService.createPost({
                     ...data,
-                    userID: userData.$id
+                    userId: userData.$id
                 })
                 if (dbPost){
                     navigate(`/post/${dbPost.$id}`)

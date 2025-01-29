@@ -23,11 +23,11 @@ function Protected({children, authentication = true}) {
     } else if(!authentication && authStatus !== authentication){
         navigate("/")
     }
-    setLoader(false)
+    setLoading(false)
   }, [authStatus, navigate, authentication])
 
   return (
-    loader ? (
+    loading ? (
       <div id="loading-screen" className="fixed inset-0 z-50 flex items-center justify-center bg-white">
         <div className="flex flex-col items-center">
           {/* Spinner */}

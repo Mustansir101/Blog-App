@@ -14,8 +14,9 @@ export class Service{
         this.storage = new Storage(this.client);
     }
 
-    async createPost({title, slug, content, featuredImg, status, userID}) {
+    async createPost({title, slug, content, featuredImage, status, userId}) {
         try {
+            console.log("Data being sent to Appwrite:", { title, slug, content, featuredImage, status, userId });
             return await this.databases.createDocument(
                 config.appwriteDatabaseId,
                 config.appwriteCollectionId,
@@ -23,9 +24,9 @@ export class Service{
                 {
                     title,
                     content,
-                    featuredImg,
+                    featuredImage,
                     status,
-                    userID
+                    userId
                 }
             );
         } catch (error) {
@@ -33,7 +34,7 @@ export class Service{
         }
     }
 
-    async updatePost(slug, {title, content, featuredImg, status}) {
+    async updatePost(slug, {title, content, featuredImage, status}) {
         try {
             return await this.databases.updateDocument(
                 config.appwriteDatabaseId,
@@ -42,7 +43,7 @@ export class Service{
                 {
                     title,
                     content,
-                    featuredImg,
+                    featuredImage,
                     status
                 }
             );
@@ -60,7 +61,7 @@ export class Service{
             );
             return true;
         } catch (error) {
-            config.log(error)
+            console.log(error)
             return false
         }
     }
@@ -73,7 +74,7 @@ export class Service{
                 slug
             );
         } catch (error) {
-            config.log(error)
+            console.log(error)
             return false
         }
     }
@@ -86,7 +87,7 @@ export class Service{
                 [ Query.equal("status", "active") ]
             );
         } catch (error) {
-            config.log(error)
+            console.log(error)
             return false
         }
     }
@@ -99,7 +100,7 @@ export class Service{
                 file
             );
         } catch (error) {
-            config.log(error)
+            console.log(error)
             return false
         }
     }
@@ -112,7 +113,7 @@ export class Service{
             );
             return true
         } catch (error) {
-            config.log(error)
+            console.log(error)
             return false
         }
     }

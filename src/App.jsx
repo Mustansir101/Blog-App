@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import './App.css'
 import auth from "./appwrite/auth"
 import { login, logout } from './store/authSlice'
 import {Header, Footer} from "./components/index"
@@ -29,8 +28,7 @@ function App() {
       <div className='w-full block'>
         <Header/>
         <main>
-          <h1>Test</h1>
-          {/* <Outlet/> */}
+          <Outlet/>
         </main>
         <Footer/>
       </div>
@@ -47,7 +45,6 @@ function App() {
         <p className="mt-4 text-gray-700 text-lg font-medium">Loading...</p>
       </div>
     </div>
-
     </>
   )
 }

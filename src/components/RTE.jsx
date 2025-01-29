@@ -14,9 +14,9 @@ function RTE({name="content", control, label, defaultValue=""}) {
          control={control}
          render={ ({field: {onChange}})=>(
             <Editor
+             apiKey='cvjruyvt4dihnhetmor0vuksns0hwuv4a1vys4umu45az8s5'
              initialValue={defaultValue}
              init={{
-                initialValue: defaultValue,
                 height: 500,
                 menubar: true,
                 plugins: [

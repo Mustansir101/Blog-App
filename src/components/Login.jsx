@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { login as AuthLogin } from '../store/authSlice'
 import { Button, Input, Logo } from "./index"
 import AuthService from '../appwrite/auth'
-import useDispatch from 'react-redux'
+import {useDispatch} from 'react-redux'
 import { useForm } from 'react-hook-form'
 
 function Login() {
@@ -49,7 +49,7 @@ function Login() {
 
         {error && <p className='text-red-600 mt-8 text-center'>{error}</p>}
 
-        // react-hook-form
+        {/* // react-hook-form */}
         <form onSubmit={handleSubmit(login)} className='mt-8'>     
           <div className='space-y-5'>
             <Input
