@@ -24,15 +24,17 @@ function App() {
   }, [])
   
   if (!loading) {
-    return <div className='min-h-screen flex flex-wrap content-between bg-gray-400'>
-      <div className='w-full block'>
-        <Header/>
-        <main>
-          <Outlet/>
-        </main>
-        <Footer/>
+    return (
+      <div className='font-mono h-screen flex flex-col bg-white'>
+        <div className='w-full block'>
+          <Header/>
+          <main>
+            <Outlet/>
+          </main>
+          <Footer/>
+        </div>
       </div>
-    </div>
+    )
   }
 
   return (
